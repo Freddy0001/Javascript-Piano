@@ -6,44 +6,112 @@
 	<script src="https://unpkg.com/tone"></script>
 	<script src="https://unpkg.com/@tonejs/ui"></script>
 	<script>
+		window.distortionvalue = 0.1;
 		function distortionslider() {
-		var distortionvalue = document.getElementById("distortionslider").value;
-		console.log(distortionvalue);
-		document.getElementById("distortionnumber").innerHTML = distortionvalue;
-		var distortionvalue = distortionvalue / 100;
-		return(distortionvalue);
+			distortionvalue = document.getElementById("distortionslider").value;
+			document.getElementById("distortionnumber").innerHTML = distortionvalue;
+			distortionvalue = parseInt(distortionvalue) / 100;
+			console.log("Distortion " + distortionvalue);
+			return distortionvalue;
 		}
-	</script>
-	<script>
-		var distortionvalue = distortionvalue;
-		var dist = new Tone.Distortion(distortionvalue).connect(trem);
-		var trem = new Tone.Tremolo().toMaster();
-		var synth = new Tone.Synth().connect(dist);
+		window.tremolovalue = 0.1;
+		function tremoloslider() {
+			tremolovalue = document.getElementById("tremoloslider").value;
+			document.getElementById("tremolonumber").innerHTML = tremolovalue;
+			tremolovalue = parseInt(tremolovalue) / 100;
+			console.log("Tremolo " + tremolovalue);
+			return tremolovalue;
+		}
+		window.reverbvalue = 1;
+		function reverbslider() {
+			reverbvalue = document.getElementById("reverbslider").value;
+			document.getElementById("reverbnumber").innerHTML = reverbvalue;
+			reverbvalue = parseFloat(reverbvalue)
+			console.log("Reverb " + reverbvalue);
+			reverbvalue = new Tone.Time(reverbvalue).toNotation();
+			return reverbvalue;
+		}
 		function A3() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("A3", "8n");
 			console.log("A3");
 		}
 		function B3() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("B3", "8n");
 			console.log("B3");
 		}
 		function C4() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("C4", "8n");
 			console.log("C4");
 		}
 		function D4() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("D4", "8n");
 			console.log("D4");
 		}
 		function E4() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("E4", "8n");
 			console.log("E4");
 		}
 		function F4() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("F4", "8n");
 			console.log("F4");
 		}
 		function G4() {
+			var reverb = new Tone.Reverb(this.reverbvalue);
+			var tremolo = new Tone.Tremolo(this.tremolovalue);
+			var distortion = new Tone.Distortion(this.distortionvalue);
+			var synth = new Tone.Synth();
+			synth.connect(distortion);
+			distortion.connect(tremolo);
+			tremolo.connect(reverb);
+			reverb.toMaster();
 			synth.triggerAttackRelease("G4", "8n");
 			console.log("G4");
 		}
@@ -83,8 +151,12 @@
 			</h2>
 		</infopanel>
 		<soundpanel>
-			<input type = "range", min = 0, max = 100, id = "distortionslider", onchange = "distortionslider()">Distortion</input>
+			<input type = "range", min = 0, max = 100, id = "distortionslider", onchange = distortionslider()>Distortion</input>
 			<p id = "distortionnumber">Distortion</p>
+			<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = tremoloslider()>Tremolo</input>
+			<p id = "tremolonumber">Tremolo</p>
+			<input type = "range", min = 0, max = 10, id = "reverbslider", onchange = reverbslider()>Reverb</input>
+			<p id = "reverbnumber">Reverb</p>
 		</soundpanel>
 	</main>
 </body>
