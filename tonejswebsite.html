@@ -22,96 +22,168 @@
 			console.log("Tremolo " + tremolovalue);
 			return tremolovalue;
 		}
-		window.reverbvalue = 1;
-		function reverbslider() {
-			reverbvalue = document.getElementById("reverbslider").value;
-			document.getElementById("reverbnumber").innerHTML = reverbvalue;
-			reverbvalue = parseFloat(reverbvalue)
-			console.log("Reverb " + reverbvalue);
-			reverbvalue = new Tone.Time(reverbvalue).toNotation();
-			return reverbvalue;
+		window.wave = "triangle"
+		function triwave() {
+			wave = "triangle"
+			console.log(wave)
+			return(wave)
 		}
-		function A3() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
+		function sqwave() {
+			wave = "square"
+			console.log(wave)
+			return(wave)
+		}
+		function siwave() {
+			wave = "sine"
+			console.log(wave)
+			return(wave)
+		}
+		function sawave() {
+			wave = "sawtooth"
+			console.log(wave)
+			return(wave)
+		}
+		function playnote(note) {
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
-			synth.triggerAttackRelease("A3", "8n");
+			tremolo.toMaster();
+			synth.triggerAttackRelease(note, "8n");
 			console.log("A3");
 		}
+		function A3() {
+			//var tremolo = new Tone.Tremolo(this.tremolovalue);
+			//var distortion = new Tone.Distortion(this.distortionvalue);
+			//var synth = new Tone.Synth({ 
+			//		oscillator : { 
+			//		type : this.wave 
+			//		} , 
+			//		envelope : { 
+			//		attack : 0.005 , 
+			//		decay : 0.1 , 
+			//		sustain : 0.3 , 
+			//		release : 1 
+			//		}});
+			//synth.connect(distortion);
+			//distortion.connect(tremolo);
+			//tremolo.toMaster();
+			//synth.triggerAttackRelease("A3", "8n");
+			//console.log("A3");
+			playnote("A3");
+		}
 		function B3() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("B3", "8n");
 			console.log("B3");
 		}
 		function C4() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("C4", "8n");
 			console.log("C4");
 		}
 		function D4() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
 			var synth = new Tone.Synth();
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("D4", "8n");
 			console.log("D4");
 		}
 		function E4() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("E4", "8n");
 			console.log("E4");
 		}
 		function F4() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("F4", "8n");
 			console.log("F4");
 		}
 		function G4() {
-			var reverb = new Tone.Reverb(this.reverbvalue);
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
-			var synth = new Tone.Synth();
+			var synth = new Tone.Synth({ 
+					oscillator : { 
+					type : this.wave 
+					} , 
+					envelope : { 
+					attack : 0.005 , 
+					decay : 0.1 , 
+					sustain : 0.3 , 
+					release : 1 
+					}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
-			tremolo.connect(reverb);
-			reverb.toMaster();
+			tremolo.toMaster();
 			synth.triggerAttackRelease("G4", "8n");
 			console.log("G4");
 		}
@@ -155,9 +227,15 @@
 			<p id = "distortionnumber">Distortion</p>
 			<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = tremoloslider()>Tremolo</input>
 			<p id = "tremolonumber">Tremolo</p>
-			<input type = "range", min = 0, max = 10, id = "reverbslider", onchange = reverbslider()>Reverb</input>
-			<p id = "reverbnumber">Reverb</p>
 		</soundpanel>
+		<synthpanel>
+			<waves>
+				<input type = "radio", name = "wave", id = "triwave", onclick = triwave()>Triangle</input>
+				<input type = "radio", name = "wave", id = "sqwave", onclick = sqwave()>Square</input>
+				<input type = "radio", name = "wave", id = "siwave", onclick = siwave()>Sine</input>
+				<input type = "radio", name = "wave", id = "sawave", onclick = sawave()>Sawtooth</input>
+			</waves>
+		</synthpanel>
 	</main>
 </body>
 </html>
