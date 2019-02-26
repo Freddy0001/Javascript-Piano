@@ -62,26 +62,30 @@
 			synth.triggerAttackRelease(note, "8n");
 			console.log(note);
 		}
-		function A3() {
-			playnote("A3");
-		}
-		function B3() {
-			playnote("B3");
-		}
-		function C4() {
-			playnote("C4");
-		}
-		function D4() {
-			playnote("D4");
-		}
-		function E4() {
-			playnote("E4");
-		}
-		function F4() {
-			playnote("F4");
-		}
-		function G4() {
-			playnote("G4");
+
+		window.addEventListener("keydown", keypress, false);
+		function keypress(e) {
+			if (e.keyCode == "65") {
+				playnote("A3");
+			}
+			if (e.keyCode == "83") {
+				playnote("B3");
+			}
+			if (e.keyCode == "68") {
+				playnote("C4");
+			}
+			if (e.keyCode == "70") {
+				playnote("D4");
+			}
+			if (e.keyCode == "71") {
+				playnote("E4");
+			}
+			if (e.keyCode == "72") {
+				playnote("F4");
+			}
+			if (e.keyCode == "74") {
+				playnote("G4");
+			}
 		}
 	</script>
 	<style>
@@ -102,13 +106,13 @@
 <body>
 	<main>
 		<keys>
-			<button class = "key", id = "A3", onclick = A3()>A3</button>
-			<button class = "key", id = "B3", onclick = B3()>B3</button>
-			<button class = "key", id = "C4", onclick = C4()>C4</button>
-			<button class = "key", id = "D4", onclick = D4()>D4</button>
-			<button class = "key", id = "E4", onclick = E4()>E4</button>
-			<button class = "key", id = "F4", onclick = F4()>F4</button>
-			<button class = "key", id = "G4", onclick = G4()>G4</button>
+			<button class = "key", id = "A3", onclick = playnote("A3")>A3</button>
+			<button class = "key", id = "B3", onclick = playnote("B3")>B3</button>
+			<button class = "key", id = "C4", onclick = playnote("C4")>C4</button>
+			<button class = "key", id = "D4", onclick = playnote("D4")>D4</button>
+			<button class = "key", id = "E4", onclick = playnote("E4")>E4</button>
+			<button class = "key", id = "F4", onclick = playnote("F4")>F4</button>
+			<button class = "key", id = "G4", onclick = playnote("G4")>G4</button>
 		</keys>
 		<infopanel>
 			<h1>
