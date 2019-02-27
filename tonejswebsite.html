@@ -43,6 +43,27 @@
 			console.log(wave)
 			return(wave)
 		}
+		window.attackvalue = 1;
+		function attackslider() {
+			attackvalue = document.getElementById("attackslider").value;
+			attackvalue = attackvalue / 50;
+			console.log("Attack " + attackvalue);
+			return(attackvalue);
+		}
+		window.decayvalue = 1;
+		function decayslider() {
+			decayvalue = document.getElementById("decayslider").value;
+			decayvalue = decayvalue / 50;
+			console.log("Decay " + decayvalue);
+			return(decayvalue);
+		}
+		window.sustainvalue = 1;
+		function sustainslider() {
+			sustainvalue = document.getElementById("sustainslider").value;
+			sustainvalue = sustainvalue / 50;
+			console.log("Sustain " + sustainvalue);
+			return(sustainvalue);
+		}
 		function playnote(note) {
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
@@ -51,15 +72,15 @@
 				type : this.wave 
 				} , 
 				envelope : { 
-				attack : 0.005 , 
-				decay : 0.1 , 
+				attack : this.attackvalue , 
+				decay : this.decayvalue , 
 				sustain : 0.3 , 
 				release : 1 
 				}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
 			tremolo.toMaster();
-			synth.triggerAttackRelease(note, "8n");
+			synth.triggerAttackRelease(note, "8s");
 			console.log(note);
 		}
 
@@ -152,12 +173,12 @@
 			<adsr>
 				<input type = "range", min = 0, max = 100, id = "attackslider", onchange = attackslider()>Attack</input>
 				<p id = "attacknumber">Attack</p>
-				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = delayslider()>Delay</input>
-				<p id = "tremolonumber">Tremolo</p>
-				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = sustainslider()>Sustain</input>
-				<p id = "tremolonumber">Tremolo</p>
-				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = releaseslider()>Release</input>
-				<p id = "tremolonumber">Tremolo</p>
+				<input type = "range", min = 0, max = 100, id = "decayslider", onchange = decayslider()>Decay</input>
+				<p id = "decaynumber">Decay</p>
+				<input type = "range", min = 0, max = 100, id = "sustainslider", onchange = sustainslider()>Sustain</input>
+				<p id = "sustainnumber">Sustain</p>
+				<input type = "range", min = 0, max = 100, id = "releaseslider", onchange = releaseslider()>Release</input>
+				<p id = "releasenumber">Release</p>
 			</adsr>
 		</synthpanel>
 	</main>
