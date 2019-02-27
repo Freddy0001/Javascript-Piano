@@ -101,6 +101,18 @@
 			padding-top: 260px;
 			border: 1px solid black;
 		}
+		synthpanel {
+			display: inline-block;
+			position: absolute;
+			margin-top: 20px;
+		}
+		waves {
+			display: inline-block;
+		}
+		adsr {
+			position: absolute;
+			display: inline-block;
+		}
 	</style>
 </head>
 <body>
@@ -123,18 +135,30 @@
 			</h2>
 		</infopanel>
 		<soundpanel>
+			<p>Effects</p>
 			<input type = "range", min = 0, max = 100, id = "distortionslider", onchange = distortionslider()>Distortion</input>
 			<p id = "distortionnumber">Distortion</p>
 			<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = tremoloslider()>Tremolo</input>
 			<p id = "tremolonumber">Tremolo</p>
 		</soundpanel>
 		<synthpanel>
+			<p>Synth Options</p>
 			<waves>
 				<input type = "radio", name = "wave", id = "triwave", onclick = triwave()>Triangle</input>
 				<input type = "radio", name = "wave", id = "sqwave", onclick = sqwave()>Square</input>
 				<input type = "radio", name = "wave", id = "siwave", onclick = siwave()>Sine</input>
 				<input type = "radio", name = "wave", id = "sawave", onclick = sawave()>Sawtooth</input>
 			</waves>
+			<adsr>
+				<input type = "range", min = 0, max = 100, id = "attackslider", onchange = attackslider()>Attack</input>
+				<p id = "attacknumber">Attack</p>
+				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = delayslider()>Delay</input>
+				<p id = "tremolonumber">Tremolo</p>
+				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = sustainslider()>Sustain</input>
+				<p id = "tremolonumber">Tremolo</p>
+				<input type = "range", min = 0, max = 100, id = "tremoloslider", onchange = releaseslider()>Release</input>
+				<p id = "tremolonumber">Tremolo</p>
+			</adsr>
 		</synthpanel>
 	</main>
 </body>
