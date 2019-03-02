@@ -64,6 +64,13 @@
 			console.log("Sustain " + sustainvalue);
 			return(sustainvalue);
 		}
+		window.releasevalue = 1;
+		function releaseslider() {
+			releasevalue = document.getElementById("releaseslider").value;
+			releasevalue = releasevalue / 50;
+			console.log("Release " + releasevalue);
+			return(releasevalue);
+		}
 		function playnote(note) {
 			var tremolo = new Tone.Tremolo(this.tremolovalue);
 			var distortion = new Tone.Distortion(this.distortionvalue);
@@ -74,8 +81,8 @@
 				envelope : { 
 				attack : this.attackvalue , 
 				decay : this.decayvalue , 
-				sustain : 0.3 , 
-				release : 1 
+				sustain : this.sustainvalue , 
+				release : this.releasevalue 
 				}});
 			synth.connect(distortion);
 			distortion.connect(tremolo);
